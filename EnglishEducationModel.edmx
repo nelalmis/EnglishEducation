@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EnglishEducationModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="EnglishEducationModelStoreContainer">
+          <EntitySet Name="Answer" EntityType="EnglishEducationModel.Store.Answer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Lesson" EntityType="EnglishEducationModel.Store.Lesson" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LessonQuestion" EntityType="EnglishEducationModel.Store.LessonQuestion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LessonVocabulary" EntityType="EnglishEducationModel.Store.LessonVocabulary" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Parameter" EntityType="EnglishEducationModel.Store.Parameter" store:Type="Tables" store:Schema="dbo" store:Name="Parameter">
+            <DefiningQuery>SELECT 
+      [Parameter].[ParamId] AS [ParamId], 
+      [Parameter].[ParamValue] AS [ParamValue], 
+      [Parameter].[ParamType] AS [ParamType], 
+      [Parameter].[ParamDescription] AS [ParamDescription]
+      FROM [dbo].[Parameter] AS [Parameter]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Question" EntityType="EnglishEducationModel.Store.Question" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Vocabulary" EntityType="EnglishEducationModel.Store.Vocabulary" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EnglishAnswer" Type="varchar" MaxLength="1000" />
+          <Property Name="TurkishAnswer" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Lesson">
+          <Key>
+            <PropertyRef Name="LessonId" />
+          </Key>
+          <Property Name="LessonId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LessonNumber" Type="int" />
+          <Property Name="LessonSubject" Type="varchar" MaxLength="100" />
+          <Property Name="LessonDate" Type="datetime" />
+          <Property Name="LevelNumber" Type="int" />
+          <Property Name="StepNumber" Type="int" />
+          <Property Name="UnitNumber" Type="int" />
+          <Property Name="LessonBookLocation" Type="varchar(max)" />
+          <Property Name="LessonAudioLocation" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="LessonQuestion">
+          <Key>
+            <PropertyRef Name="LessonQuestionId" />
+          </Key>
+          <Property Name="LessonQuestionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LessonId" Type="int" />
+          <Property Name="QuestionId" Type="int" />
+        </EntityType>
+        <EntityType Name="LessonVocabulary">
+          <Key>
+            <PropertyRef Name="LessonVocabularyId" />
+          </Key>
+          <Property Name="LessonVocabularyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LessonId" Type="int" />
+          <Property Name="VocabularyId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'EnglishEducation.dbo.Parameter' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="ParamId" />
+            <PropertyRef Name="ParamType" />
+            <PropertyRef Name="ParamDescription" />
+          </Key>
+          <Property Name="ParamId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParamValue" Type="int" />
+          <Property Name="ParamType" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ParamDescription" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EnglishQuestion" Type="varchar" MaxLength="400" />
+          <Property Name="TurkishQuestion" Type="varchar" MaxLength="400" />
+        </EntityType>
+        <EntityType Name="Vocabulary">
+          <Key>
+            <PropertyRef Name="VocabularyId" />
+          </Key>
+          <Property Name="VocabularyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EnglishWord" Type="varchar" MaxLength="100" />
+          <Property Name="TurkishWord" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'EnglishEducation.dbo.QuestionAnswer' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="QuestionAnswer">
+        <Property Name="QuestionAnswerId" Type="int" />
+        <Property Name="QuestionId" Type="int" />
+        <Property Name="EnglishAnswer" Type="varchar" MaxLength="1000" />
+        <Property Name="TurkishAnswer" Type="varchar" MaxLength="1000" />
+      </EntityType>-->
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EnglishEducationModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="EnglishEducationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Answer" EntityType="EnglishEducationModel.Answer" />
+          <EntitySet Name="Lesson" EntityType="EnglishEducationModel.Lesson" />
+          <EntitySet Name="LessonQuestion" EntityType="EnglishEducationModel.LessonQuestion" />
+          <EntitySet Name="LessonVocabulary" EntityType="EnglishEducationModel.LessonVocabulary" />
+          <EntitySet Name="Parameter" EntityType="EnglishEducationModel.Parameter" />
+          <EntitySet Name="Question" EntityType="EnglishEducationModel.Question" />
+          <EntitySet Name="Vocabulary" EntityType="EnglishEducationModel.Vocabulary" />
+        </EntityContainer>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnglishAnswer" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="TurkishAnswer" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Lesson">
+          <Key>
+            <PropertyRef Name="LessonId" />
+          </Key>
+          <Property Name="LessonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LessonNumber" Type="Int32" />
+          <Property Name="LessonSubject" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="LessonDate" Type="DateTime" Precision="3" />
+          <Property Name="LevelNumber" Type="Int32" />
+          <Property Name="StepNumber" Type="Int32" />
+          <Property Name="UnitNumber" Type="Int32" />
+          <Property Name="LessonBookLocation" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="LessonAudioLocation" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="LessonQuestion">
+          <Key>
+            <PropertyRef Name="LessonQuestionId" />
+          </Key>
+          <Property Name="LessonQuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LessonId" Type="Int32" />
+          <Property Name="QuestionId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LessonVocabulary">
+          <Key>
+            <PropertyRef Name="LessonVocabularyId" />
+          </Key>
+          <Property Name="LessonVocabularyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LessonId" Type="Int32" />
+          <Property Name="VocabularyId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="ParamId" />
+            <PropertyRef Name="ParamType" />
+            <PropertyRef Name="ParamDescription" />
+          </Key>
+          <Property Name="ParamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParamValue" Type="Int32" />
+          <Property Name="ParamType" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ParamDescription" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnglishQuestion" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
+          <Property Name="TurkishQuestion" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Vocabulary">
+          <Key>
+            <PropertyRef Name="VocabularyId" />
+          </Key>
+          <Property Name="VocabularyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnglishWord" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="TurkishWord" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EnglishEducationModelStoreContainer" CdmEntityContainer="EnglishEducationEntities">
+          <EntitySetMapping Name="Answer">
+            <EntityTypeMapping TypeName="EnglishEducationModel.Answer">
+              <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="EnglishAnswer" ColumnName="EnglishAnswer" />
+                <ScalarProperty Name="TurkishAnswer" ColumnName="TurkishAnswer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lesson">
+            <EntityTypeMapping TypeName="EnglishEducationModel.Lesson">
+              <MappingFragment StoreEntitySet="Lesson">
+                <ScalarProperty Name="LessonId" ColumnName="LessonId" />
+                <ScalarProperty Name="LessonNumber" ColumnName="LessonNumber" />
+                <ScalarProperty Name="LessonSubject" ColumnName="LessonSubject" />
+                <ScalarProperty Name="LessonDate" ColumnName="LessonDate" />
+                <ScalarProperty Name="LevelNumber" ColumnName="LevelNumber" />
+                <ScalarProperty Name="StepNumber" ColumnName="StepNumber" />
+                <ScalarProperty Name="UnitNumber" ColumnName="UnitNumber" />
+                <ScalarProperty Name="LessonBookLocation" ColumnName="LessonBookLocation" />
+                <ScalarProperty Name="LessonAudioLocation" ColumnName="LessonAudioLocation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LessonQuestion">
+            <EntityTypeMapping TypeName="EnglishEducationModel.LessonQuestion">
+              <MappingFragment StoreEntitySet="LessonQuestion">
+                <ScalarProperty Name="LessonQuestionId" ColumnName="LessonQuestionId" />
+                <ScalarProperty Name="LessonId" ColumnName="LessonId" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LessonVocabulary">
+            <EntityTypeMapping TypeName="EnglishEducationModel.LessonVocabulary">
+              <MappingFragment StoreEntitySet="LessonVocabulary">
+                <ScalarProperty Name="LessonVocabularyId" ColumnName="LessonVocabularyId" />
+                <ScalarProperty Name="LessonId" ColumnName="LessonId" />
+                <ScalarProperty Name="VocabularyId" ColumnName="VocabularyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parameter">
+            <EntityTypeMapping TypeName="EnglishEducationModel.Parameter">
+              <MappingFragment StoreEntitySet="Parameter">
+                <ScalarProperty Name="ParamId" ColumnName="ParamId" />
+                <ScalarProperty Name="ParamValue" ColumnName="ParamValue" />
+                <ScalarProperty Name="ParamType" ColumnName="ParamType" />
+                <ScalarProperty Name="ParamDescription" ColumnName="ParamDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Question">
+            <EntityTypeMapping TypeName="EnglishEducationModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="EnglishQuestion" ColumnName="EnglishQuestion" />
+                <ScalarProperty Name="TurkishQuestion" ColumnName="TurkishQuestion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vocabulary">
+            <EntityTypeMapping TypeName="EnglishEducationModel.Vocabulary">
+              <MappingFragment StoreEntitySet="Vocabulary">
+                <ScalarProperty Name="VocabularyId" ColumnName="VocabularyId" />
+                <ScalarProperty Name="EnglishWord" ColumnName="EnglishWord" />
+                <ScalarProperty Name="TurkishWord" ColumnName="TurkishWord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

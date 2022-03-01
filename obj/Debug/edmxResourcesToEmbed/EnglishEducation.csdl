@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EnglishEducationModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="EnglishEducationEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Answer" EntityType="EnglishEducationModel.Answer" />
+    <EntitySet Name="Lesson" EntityType="EnglishEducationModel.Lesson" />
+    <EntitySet Name="LessonQuestion" EntityType="EnglishEducationModel.LessonQuestion" />
+    <EntitySet Name="LessonVocabulary" EntityType="EnglishEducationModel.LessonVocabulary" />
+    <EntitySet Name="Parameter" EntityType="EnglishEducationModel.Parameter" />
+    <EntitySet Name="Question" EntityType="EnglishEducationModel.Question" />
+    <EntitySet Name="Vocabulary" EntityType="EnglishEducationModel.Vocabulary" />
+  </EntityContainer>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnswerId" />
+    </Key>
+    <Property Name="AnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EnglishAnswer" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="TurkishAnswer" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="LessonDate" Type="DateTime" Precision="3" />
+    <Property Name="LessonUnitId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Lesson">
+    <Key>
+      <PropertyRef Name="LessonId" />
+    </Key>
+    <Property Name="LessonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LessonNumber" Type="Int32" />
+    <Property Name="LessonDate" Type="DateTime" Precision="3" />
+    <Property Name="LevelNumber" Type="Int32" />
+    <Property Name="StepNumber" Type="Int32" />
+    <Property Name="UnitNumber" Type="Int32" />
+    <Property Name="LessonBookLocation" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="LessonAudioLocation" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Type="String" Name="LessonSubject" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LessonQuestion">
+    <Key>
+      <PropertyRef Name="LessonQuestionId" />
+    </Key>
+    <Property Name="LessonQuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LessonId" Type="Int32" />
+    <Property Name="QuestionId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="LessonVocabulary">
+    <Key>
+      <PropertyRef Name="LessonVocabularyId" />
+    </Key>
+    <Property Name="LessonVocabularyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LessonId" Type="Int32" />
+    <Property Name="VocabularyId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Parameter">
+    <Key>
+      <PropertyRef Name="ParamId" />
+      <PropertyRef Name="ParamType" />
+      <PropertyRef Name="ParamDescription" />
+    </Key>
+    <Property Name="ParamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParamValue" Type="Int32" />
+    <Property Name="ParamType" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ParamDescription" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="QuestionId" />
+    </Key>
+    <Property Name="QuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EnglishQuestion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="TurkishQuestion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Vocabulary">
+    <Key>
+      <PropertyRef Name="VocabularyId" />
+    </Key>
+    <Property Name="VocabularyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EnglishWord" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="TurkishWord" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+</Schema>

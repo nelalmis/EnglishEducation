@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EnglishEducationModelStoreContainer" CdmEntityContainer="EnglishEducationEntities">
+    <EntitySetMapping Name="Answer">
+      <EntityTypeMapping TypeName="EnglishEducationModel.Answer">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+          <ScalarProperty Name="EnglishAnswer" ColumnName="EnglishAnswer" />
+          <ScalarProperty Name="TurkishAnswer" ColumnName="TurkishAnswer" />
+          <ScalarProperty Name="LessonDate" ColumnName="LessonDate" />
+          <ScalarProperty Name="LessonUnitId" ColumnName="LessonUnitId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lesson">
+      <EntityTypeMapping TypeName="EnglishEducationModel.Lesson">
+        <MappingFragment StoreEntitySet="Lesson">
+          <ScalarProperty Name="LessonId" ColumnName="LessonId" />
+          <ScalarProperty Name="LessonDate" ColumnName="LessonDate" />
+          <ScalarProperty Name="LevelNumber" ColumnName="LevelNumber" />
+          <ScalarProperty Name="StepNumber" ColumnName="StepNumber" />
+          <ScalarProperty Name="UnitNumber" ColumnName="UnitNumber" />
+          <ScalarProperty Name="LessonBookLocation" ColumnName="LessonBookLocation" />
+          <ScalarProperty Name="LessonAudioLocation" ColumnName="LessonAudioLocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LessonQuestion">
+      <EntityTypeMapping TypeName="EnglishEducationModel.LessonQuestion">
+        <MappingFragment StoreEntitySet="LessonQuestion">
+          <ScalarProperty Name="LessonQuestionId" ColumnName="LessonQuestionId" />
+          <ScalarProperty Name="LessonId" ColumnName="LessonId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LessonVocabulary">
+      <EntityTypeMapping TypeName="EnglishEducationModel.LessonVocabulary">
+        <MappingFragment StoreEntitySet="LessonVocabulary">
+          <ScalarProperty Name="LessonVocabularyId" ColumnName="LessonVocabularyId" />
+          <ScalarProperty Name="LessonId" ColumnName="LessonId" />
+          <ScalarProperty Name="VocabularyId" ColumnName="VocabularyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parameter">
+      <EntityTypeMapping TypeName="EnglishEducationModel.Parameter">
+        <MappingFragment StoreEntitySet="Parameter">
+          <ScalarProperty Name="ParamId" ColumnName="ParamId" />
+          <ScalarProperty Name="ParamValue" ColumnName="ParamValue" />
+          <ScalarProperty Name="ParamType" ColumnName="ParamType" />
+          <ScalarProperty Name="ParamDescription" ColumnName="ParamDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Question">
+      <EntityTypeMapping TypeName="EnglishEducationModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="EnglishQuestion" ColumnName="EnglishQuestion" />
+          <ScalarProperty Name="TurkishQuestion" ColumnName="TurkishQuestion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vocabulary">
+      <EntityTypeMapping TypeName="EnglishEducationModel.Vocabulary">
+        <MappingFragment StoreEntitySet="Vocabulary">
+          <ScalarProperty Name="VocabularyId" ColumnName="VocabularyId" />
+          <ScalarProperty Name="EnglishWord" ColumnName="EnglishWord" />
+          <ScalarProperty Name="TurkishWord" ColumnName="TurkishWord" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

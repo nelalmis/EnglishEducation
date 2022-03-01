@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EnglishEducationModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="EnglishEducationModelStoreContainer">
+    <EntitySet Name="Answer" EntityType="EnglishEducationModel.Store.Answer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Lesson" EntityType="EnglishEducationModel.Store.Lesson" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LessonQuestion" EntityType="EnglishEducationModel.Store.LessonQuestion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LessonVocabulary" EntityType="EnglishEducationModel.Store.LessonVocabulary" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Parameter" EntityType="EnglishEducationModel.Store.Parameter" store:Type="Tables" store:Schema="dbo" store:Name="Parameter">
+      <DefiningQuery>SELECT 
+      [Parameter].[ParamId] AS [ParamId], 
+      [Parameter].[ParamValue] AS [ParamValue], 
+      [Parameter].[ParamType] AS [ParamType], 
+      [Parameter].[ParamDescription] AS [ParamDescription]
+      FROM [dbo].[Parameter] AS [Parameter]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Question" EntityType="EnglishEducationModel.Store.Question" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vocabulary" EntityType="EnglishEducationModel.Store.Vocabulary" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnswerId" />
+    </Key>
+    <Property Name="AnswerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EnglishAnswer" Type="varchar(max)" />
+    <Property Name="TurkishAnswer" Type="varchar(max)" />
+    <Property Name="LessonDate" Type="datetime" />
+    <Property Name="LessonUnitId" Type="int" />
+  </EntityType>
+  <EntityType Name="Lesson">
+    <Key>
+      <PropertyRef Name="LessonId" />
+    </Key>
+    <Property Name="LessonId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LessonNumber" Type="int" />
+    <Property Name="LessonSubject" Type="varchar" MaxLength="100" />
+    <Property Name="LessonDate" Type="datetime" />
+    <Property Name="LevelNumber" Type="int" />
+    <Property Name="StepNumber" Type="int" />
+    <Property Name="UnitNumber" Type="int" />
+    <Property Name="LessonBookLocation" Type="varchar(max)" />
+    <Property Name="LessonAudioLocation" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="LessonQuestion">
+    <Key>
+      <PropertyRef Name="LessonQuestionId" />
+    </Key>
+    <Property Name="LessonQuestionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LessonId" Type="int" />
+    <Property Name="QuestionId" Type="int" />
+  </EntityType>
+  <EntityType Name="LessonVocabulary">
+    <Key>
+      <PropertyRef Name="LessonVocabularyId" />
+    </Key>
+    <Property Name="LessonVocabularyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LessonId" Type="int" />
+    <Property Name="VocabularyId" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'EnglishEducation.dbo.Parameter' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Parameter">
+    <Key>
+      <PropertyRef Name="ParamId" />
+      <PropertyRef Name="ParamType" />
+      <PropertyRef Name="ParamDescription" />
+    </Key>
+    <Property Name="ParamId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ParamValue" Type="int" />
+    <Property Name="ParamType" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ParamDescription" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="QuestionId" />
+    </Key>
+    <Property Name="QuestionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EnglishQuestion" Type="varchar(max)" />
+    <Property Name="TurkishQuestion" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Vocabulary">
+    <Key>
+      <PropertyRef Name="VocabularyId" />
+    </Key>
+    <Property Name="VocabularyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EnglishWord" Type="varchar" MaxLength="100" />
+    <Property Name="TurkishWord" Type="varchar" MaxLength="100" />
+  </EntityType>
+</Schema>

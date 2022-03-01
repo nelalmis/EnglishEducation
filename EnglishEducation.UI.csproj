@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{34D6F2EE-26D7-45C4-B25A-C624F16C6F39}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EnglishEducation</RootNamespace>
+    <AssemblyName>EnglishEducation</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.WinControls.GridView, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.UI, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="TelerikCommon, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Answer.cs">
+      <DependentUpon>EnglishEducationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class\DatabaseOperations.cs" />
+    <Compile Include="Class\DFormOperations.cs" />
+    <Compile Include="Class\DLesson.cs" />
+    <Compile Include="Class\DLessonQuestion.cs" />
+    <Compile Include="Class\DLessonVocabulary.cs" />
+    <Compile Include="Class\DParameter.cs" />
+    <Compile Include="Class\DQuestion.cs" />
+    <Compile Include="Class\DVocabulary.cs" />
+    <Compile Include="Class\Enums.cs" />
+    <Compile Include="Class\ExamQuestion.cs" />
+    <Compile Include="Class\FileOperations.cs" />
+    <Compile Include="Class\QuestionAlgorithm.cs" />
+    <Compile Include="Class\QuizClass.cs" />
+    <Compile Include="EnglishEducationModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnglishEducationModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EnglishEducationModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnglishEducationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EnglishEducationModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnglishEducationModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QuestionAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuestionAdd.Designer.cs">
+      <DependentUpon>QuestionAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QuestionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuestionList.Designer.cs">
+      <DependentUpon>QuestionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LessonAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LessonAdd.Designer.cs">
+      <DependentUpon>LessonAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LessonOperations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LessonOperations.Designer.cs">
+      <DependentUpon>LessonOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainPage.Designer.cs">
+      <DependentUpon>MainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainPageView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainPageView.Designer.cs">
+      <DependentUpon>MainPageView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WordAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WordAdd.Designer.cs">
+      <DependentUpon>WordAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WordList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WordList.Designer.cs">
+      <DependentUpon>WordList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lesson.cs">
+      <DependentUpon>EnglishEducationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LessonQuestion.cs">
+      <DependentUpon>EnglishEducationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LessonVocabulary.cs">
+      <DependentUpon>EnglishEducationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parameter.cs">
+      <DependentUpon>EnglishEducationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question.cs">
+      <DependentUpon>EnglishEducationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vocabulary.cs">
+      <DependentUpon>EnglishEducationModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\QuestionAdd.resx">
+      <DependentUpon>QuestionAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuestionList.resx">
+      <DependentUpon>QuestionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LessonAdd.resx">
+      <DependentUpon>LessonAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LessonOperations.resx">
+      <DependentUpon>LessonOperations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainPage.resx">
+      <DependentUpon>MainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainPageView.resx">
+      <DependentUpon>MainPageView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WordAdd.resx">
+      <DependentUpon>WordAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WordList.resx">
+      <DependentUpon>WordList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="App.Config" />
+    <EntityDeploy Include="EnglishEducationModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EnglishEducationModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EnglishEducationModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EnglishEducationModel.edmx</DependentUpon>
+      <LastGenOutput>EnglishEducationModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EnglishEducationModel.edmx.diagram">
+      <DependentUpon>EnglishEducationModel.edmx</DependentUpon>
+    </None>
+    <None Include="EnglishEducationModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EnglishEducationModel.edmx</DependentUpon>
+      <LastGenOutput>EnglishEducationModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

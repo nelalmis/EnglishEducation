@@ -1,0 +1,3 @@
+C:\Users\nevzat\Documents\Visual Studio 2015\Projects\EnglishEducation\EnglishEducation\bin\Debug\EnglishEducation.exe.config
+C:\Users\nevzat\Documents\Visual Studio 2015\Projects\EnglishEducation\EnglishEducation\obj\Debug\EnglishEducation.exe
+C:\Users\nevzat\Documents\Visual Studio 2015\Projects\EnglishEducation\EnglishEducation\obj\Debug\EnglishEducation.pdb
